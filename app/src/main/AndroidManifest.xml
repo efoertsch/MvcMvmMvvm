@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.raizlabs.mvc_mvp_mvvm"
+<manifest package="com.fisincorporated.mvc_mvp_mvvm"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".master.MasterActivity"
+            android:name="com.fisincorporated.master.MasterActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_master"
             android:theme="@style/FullscreenTheme">
@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".mvc.MvcActivity"/>
-        <activity android:name=".mvp.MvpActivity"/>
-        <activity android:name=".mvvm.MvvmActivity"></activity>
+        <activity android:name="com.fisincorporated.mvc.MvcActivity"/>
+        <activity android:name="com.fisincorporated.mvp.MvpActivity"/>
+        <activity android:name="com.fisincorporated.mvpos.MvpOSActivity"></activity>
     </application>
 
 </manifest>

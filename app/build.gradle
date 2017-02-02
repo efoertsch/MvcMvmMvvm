@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
-        applicationId "com.raizlabs.mvc_mvp_mvvm"
+        applicationId "com.fisincorporated.mvc_mvp_mvvm"
         minSdkVersion 25
         targetSdkVersion 25
         versionCode 1
