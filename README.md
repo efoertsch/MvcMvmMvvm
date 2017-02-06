@@ -8,6 +8,8 @@ The same data/screen layout is presented using the following architectures:
 3. MVP using Observer/Subscriber for transfering data/updates
 4. MVVM using Data Binding
 
-TODO 
-Implement Dagger2
-Add Mockito testing
+TODO:
+
+Implement Dagger2  
+Add Mockito testing  
+
