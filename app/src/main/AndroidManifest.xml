@@ -22,6 +22,8 @@
         <activity android:name="com.fisincorporated.mvc.MvcActivity"/>
         <activity android:name="com.fisincorporated.mvp.MvpActivity"/>
         <activity android:name="com.fisincorporated.mvpos.MvpOSActivity"></activity>
+        <activity android:name="com.fisincorporated.mvvm.MvvmActivity"></activity>
+        MvvmActivity
     </application>
 
 </manifest>

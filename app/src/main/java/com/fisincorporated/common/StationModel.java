@@ -41,7 +41,6 @@ public class StationModel implements IStationModel {
     @Override
     public List<IStationControl> getStationControls(){
         return stationControls;
-
     }
 
     @Override
@@ -65,9 +64,16 @@ public class StationModel implements IStationModel {
     }
 
     @Override
+    public String getLogText() {
+        return logText;
+    }
+
+    @Override
     public void setStationSwitchValue(int position, boolean onOff){
         if (position <= stationControls.size()){
             stationControls.get(position).setOnOff(onOff);
         }
     }
+
+
 }

@@ -13,5 +13,7 @@ public interface IStationModel {
 
     void setLogText(String logText);
 
+    String getLogText();
+
     void setStationSwitchValue(int position, boolean onOff);
 }
