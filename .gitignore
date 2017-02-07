@@ -41,4 +41,7 @@ captures/
 
 # Keystore files
 *.jks
-.gitignore
+
+.idea/
+
+
