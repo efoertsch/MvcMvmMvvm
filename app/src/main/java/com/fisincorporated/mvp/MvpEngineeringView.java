@@ -13,6 +13,8 @@ import com.fisincorporated.common.RecyclerViewAdapter;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,6 +24,7 @@ public class MvpEngineeringView implements IMvpEngineeringView {
     View view;
     IMvpEngineeringPresenter iMvpEngineeringPresenter;
 
+    @Inject
     public MvpEngineeringView(){}
 
     public MvpEngineeringView assignView(View view) {

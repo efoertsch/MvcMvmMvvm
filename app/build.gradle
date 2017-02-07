@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
@@ -30,18 +31,26 @@ dependencies {
     })
 
 
+    // Android support stuff
     compile 'com.android.support:design:25.0.1'
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.android.support:recyclerview-v7:25.0.1'
+
+
+    // Butterknife - also includes library for Dagger
     compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.google.dagger:dagger:2.8'
-    compile 'com.android.support:support-v4:25.0.1'
-    testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
+    // For MVP Observer/Subscriber
     compile 'io.reactivex:rxandroid:1.2.0'
     compile 'io.reactivex:rxjava:1.1.5'
 
-    // coming soon
-    //annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+    // For Dagger2
+    // compile 'com.google.dagger:dagger:2.8'  // Added above for ButterKnife
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+
+    // For testing
+    testCompile 'junit:junit:4.12'
+
 }
