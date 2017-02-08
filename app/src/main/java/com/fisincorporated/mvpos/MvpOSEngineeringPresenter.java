@@ -8,10 +8,9 @@ import com.fisincorporated.common.SwitchChange;
 import rx.Observable;
 import rx.Subscriber;
 
-// Is implementing IMvpOSEngineeringViewModel interface really way to go in MVVM architecture?
-public class MvpOSEngineeringViewModel implements IMvpOSEngineeringViewModel {
+public class MvpOSEngineeringPresenter implements IMvpOSEngineeringPresenter {
 
-    private static final String TAG = MvpOSEngineeringViewModel.class.getSimpleName();
+    private static final String TAG = MvpOSEngineeringPresenter.class.getSimpleName();
 
     private IStationModel iStationModel;
 
@@ -25,9 +24,9 @@ public class MvpOSEngineeringViewModel implements IMvpOSEngineeringViewModel {
             }
     );
 
-    private IMvpOSEngineeringView imvvmEngineeringView;
+    private IMvpOSEngineeringView iMvpOSEngineeringView;
 
-    public MvpOSEngineeringViewModel() {
+    public MvpOSEngineeringPresenter()  {
         iStationModel = StationModel.getStationModel();
     }
 
@@ -36,9 +35,9 @@ public class MvpOSEngineeringViewModel implements IMvpOSEngineeringViewModel {
         return stationModelSetupObervable;
     }
 
-    public void assign(IMvpOSEngineeringView imvvmEngineeringView) {
-        this.imvvmEngineeringView = imvvmEngineeringView;
-        imvvmEngineeringView.getSwitchChangePublishSubject().subscribe(new Subscriber<SwitchChange>() {
+    public void assign(IMvpOSEngineeringView iMvpOSEngineeringView) {
+        this.iMvpOSEngineeringView = iMvpOSEngineeringView;
+        iMvpOSEngineeringView.getSwitchChangePublishSubject().subscribe(new Subscriber<SwitchChange>() {
             @Override
             public void onCompleted() {
                 // Nothing
@@ -56,7 +55,7 @@ public class MvpOSEngineeringViewModel implements IMvpOSEngineeringViewModel {
             }
         });
 
-        imvvmEngineeringView.getLogUpdatePublishSubject().subscribe(new Subscriber<String>() {
+        iMvpOSEngineeringView.getLogUpdatePublishSubject().subscribe(new Subscriber<String>() {
             @Override
             public void onCompleted() {}
 

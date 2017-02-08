@@ -2,6 +2,6 @@ package com.fisincorporated.mvpos;
 
 import rx.Observable;
 
-public interface IMvpOSEngineeringViewModel {
+public interface IMvpOSEngineeringPresenter {
     Observable getStationModelSetupObservable();
 }
