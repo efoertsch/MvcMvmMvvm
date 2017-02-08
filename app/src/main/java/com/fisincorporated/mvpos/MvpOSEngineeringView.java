@@ -16,6 +16,8 @@ import com.fisincorporated.common.SwitchChangeListener;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -27,7 +29,7 @@ public class MvpOSEngineeringView implements SwitchChangeListener, IMvpOSEnginee
 
     private View view;
 
-    private IMvpOSEngineeringViewModel iEngineeringViewModel;
+    private IMvpOSEngineeringPresenter iEngineeringViewModel;
 
     private PublishSubject<SwitchChange> switchChangePublishSubject = PublishSubject.create();
 
@@ -55,6 +57,8 @@ public class MvpOSEngineeringView implements SwitchChangeListener, IMvpOSEnginee
         logUpdatePublishSubject.onNext(stationLog.getText().toString());
     }
 
+
+    @Inject
     public MvpOSEngineeringView() {
     }
 
@@ -64,7 +68,7 @@ public class MvpOSEngineeringView implements SwitchChangeListener, IMvpOSEnginee
         return this;
     }
 
-    public MvpOSEngineeringView assignViewModel(IMvpOSEngineeringViewModel iEngineeringViewModel) {
+    public MvpOSEngineeringView assignViewModel(IMvpOSEngineeringPresenter iEngineeringViewModel) {
         this.iEngineeringViewModel = iEngineeringViewModel;
         return this;
     }

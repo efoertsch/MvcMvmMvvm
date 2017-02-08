@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="station" type="com.fisincorporated.common.IStationModel" />
+            name="viewModel" type="com.fisincorporated.mvvm.MvvmViewModel" />
     </data>
 
     <LinearLayout
@@ -19,11 +19,11 @@
         tools:context="com.fisincorporated.mvc.MvvmActivity">
 
         <TextView
-            android:id="@+id/activity_station_title"
+            android:id="@+id/activity_viewModel_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:text="@{station.stationName}"
+            android:text="@{viewModel.stationName}"
             tools:text="StationName"/>
 
         <android.support.v7.widget.RecyclerView
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/activity_station_log_label"
-                android:hint="@{station.logHint}"
+                android:hint="@{viewModel.logHint}"
                 tools:hint="Enter station log here"
                 android:inputType="textAutoCorrect|textCapSentences|textMultiLine"
                 android:paddingLeft="@dimen/activity_horizontal_margin" />
@@ -59,8 +59,8 @@
             android:layout_below="@+id/activity_station_log"
             android:layout_marginTop="25dp"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:text="@{station.bigButtonName}"
-            android:onClick="onClickSaveLogButton"
+            android:text="@{viewModel.bigButtonName}"
+            android:onClick="@{viewModel::onClickSaveLogButton}"
             />
 
     </LinearLayout>
