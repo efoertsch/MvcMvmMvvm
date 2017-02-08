@@ -24,11 +24,12 @@ import butterknife.OnClick;
 import rx.Subscriber;
 import rx.subjects.PublishSubject;
 
+// TODO - Is implementing IMvpOSEngineeringView interface really way to go in MVVM architecture?
 public class MvpOSEngineeringView implements SwitchChangeListener, IMvpOSEngineeringView {
 
     private View view;
 
-    private IMvpOSEngineeringPresenter iMvpOSEngineeringPresenter;
+    private IMvpOSEngineeringPresenter iEngineeringViewModel;
 
     private PublishSubject<SwitchChange> switchChangePublishSubject = PublishSubject.create();
 
@@ -68,12 +69,12 @@ public class MvpOSEngineeringView implements SwitchChangeListener, IMvpOSEnginee
     }
 
     public MvpOSEngineeringView assignViewModel(IMvpOSEngineeringPresenter iEngineeringViewModel) {
-        this.iMvpOSEngineeringPresenter = iEngineeringViewModel;
+        this.iEngineeringViewModel = iEngineeringViewModel;
         return this;
     }
 
     public void onLoad() {
-        iMvpOSEngineeringPresenter.getStationModelSetupObservable().subscribe(new Subscriber<IStationModel>() {
+        iEngineeringViewModel.getStationModelSetupObservable().subscribe(new Subscriber<IStationModel>() {
             @Override
             public void onNext(IStationModel stationModel) {
                 stationTitle.setText(stationModel.getStationName());
@@ -94,6 +95,7 @@ public class MvpOSEngineeringView implements SwitchChangeListener, IMvpOSEnginee
 
         });
     }
+
 
     @Override
     public PublishSubject getSwitchChangePublishSubject() {
