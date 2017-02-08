@@ -24,7 +24,6 @@ import butterknife.OnClick;
 import rx.Subscriber;
 import rx.subjects.PublishSubject;
 
-// TODO - Is implementing IMvpOSEngineeringView interface really way to go in MVVM architecture?
 public class MvpOSEngineeringView implements SwitchChangeListener, IMvpOSEngineeringView {
 
     private View view;
@@ -95,7 +94,6 @@ public class MvpOSEngineeringView implements SwitchChangeListener, IMvpOSEnginee
 
         });
     }
-
 
     @Override
     public PublishSubject getSwitchChangePublishSubject() {
