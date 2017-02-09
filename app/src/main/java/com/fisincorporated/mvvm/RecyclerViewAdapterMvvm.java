@@ -33,6 +33,7 @@ public class RecyclerViewAdapterMvvm extends RecyclerView.Adapter<RecyclerViewAd
 
     @Override
     public void onBindViewHolder(RecyclerViewAdapterMvvm.ViewHolder holder, int position) {
+        // Note that binding is direct to StationControl via it's interface (as opposed to having ViewModel)
         holder.binding.setControl(iStationControls.get(position));
         holder.binding.listItemSwitch.setTag(position);
         holder.binding.listItemSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

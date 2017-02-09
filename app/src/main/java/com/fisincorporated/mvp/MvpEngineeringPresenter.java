@@ -3,20 +3,23 @@ package com.fisincorporated.mvp;
 import android.util.Log;
 
 import com.fisincorporated.common.IStationModel;
-import com.fisincorporated.common.StationModel;
 import com.fisincorporated.common.SwitchChange;
 import com.fisincorporated.common.SwitchChangeListener;
+
+import javax.inject.Inject;
+
 
 public class MvpEngineeringPresenter implements IMvpEngineeringPresenter, SwitchChangeListener {
 
     private static final String TAG = MvpEngineeringPresenter.class.getSimpleName();
 
     private IMvpEngineeringView iMvpEngineeringView;
-    private IStationModel iStationModel;
 
-    public MvpEngineeringPresenter() {
-        iStationModel = StationModel.getStationModel();
-    }
+    @Inject
+    public IStationModel iStationModel;
+
+    @Inject
+    public MvpEngineeringPresenter() {}
 
 
     public MvpEngineeringPresenter assignEngineeringView(IMvpEngineeringView iMvpEngineeringView) {

@@ -2,17 +2,20 @@ package com.fisincorporated.mvpos;
 import android.util.Log;
 
 import com.fisincorporated.common.IStationModel;
-import com.fisincorporated.common.StationModel;
 import com.fisincorporated.common.SwitchChange;
+
+import javax.inject.Inject;
 
 import rx.Observable;
 import rx.Subscriber;
 
+// Is implementing IMvpOSEngineeringPresenter interface really way to go in MVVM architecture?
 public class MvpOSEngineeringPresenter implements IMvpOSEngineeringPresenter {
 
     private static final String TAG = MvpOSEngineeringPresenter.class.getSimpleName();
 
-    private IStationModel iStationModel;
+    @Inject
+    public IStationModel iStationModel;
 
     Observable<IStationModel> stationModelSetupObervable = Observable.create(
             new Observable.OnSubscribe<IStationModel>() {
@@ -24,8 +27,8 @@ public class MvpOSEngineeringPresenter implements IMvpOSEngineeringPresenter {
             }
     );
 
-    public MvpOSEngineeringPresenter()  {
-        iStationModel = StationModel.getStationModel();
+    @Inject
+    public MvpOSEngineeringPresenter() {
     }
 
     @Override

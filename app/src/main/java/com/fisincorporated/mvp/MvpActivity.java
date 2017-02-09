@@ -3,21 +3,28 @@ package com.fisincorporated.mvp;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.fisincorporated.dagger.DaggerApplication;
 import com.fisincorporated.mvc_mvp_mvvm.R;
 
+import javax.inject.Inject;
+
 public class MvpActivity extends AppCompatActivity {
+
+    @Inject
+    MvpEngineeringPresenter mvpEngineeringPresenter;
+
+    @Inject
+    MvpEngineeringView mvpEngineeringView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mvc_mvp);
         setTitle("MVP");
-        MvpEngineeringPresenter mvpEngineeringPresenter = new MvpEngineeringPresenter();
 
-        // Is this best way to wire up Presenter and View? (At least w/o Dagger)
-        MvpEngineeringView mvpEngineeringView = (new MvpEngineeringView())
-                .assignView(findViewById(R.id.activity_station_main_layout))
-                .assignPresenter(mvpEngineeringPresenter);
+        ((DaggerApplication) getApplication()).getComponent().inject(this);
+
+        mvpEngineeringView.assignView(findViewById(R.id.activity_station_main_layout)).assignPresenter(mvpEngineeringPresenter);
 
         // Could have left view interface in activity. Carrying things a bit to far?
         mvpEngineeringPresenter.assignEngineeringView(mvpEngineeringView);

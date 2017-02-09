@@ -6,26 +6,26 @@ import android.view.View;
 
 import com.fisincorporated.common.IStationControl;
 import com.fisincorporated.common.IStationModel;
-import com.fisincorporated.common.StationModel;
 import com.fisincorporated.common.SwitchChange;
 import com.fisincorporated.common.SwitchChangeListener;
 import com.fisincorporated.mvc_mvp_mvvm.databinding.ActivityMvvmBinding;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 // For convenience using IStationModel here also. The methods are used in view binding
 public class MvvmViewModel  implements IStationModel, SwitchChangeListener {
 
     private static final String TAG = MvvmViewModel.class.getSimpleName();
 
-
+    @Inject
     public IStationModel iStationModel;
 
     private ActivityMvvmBinding binding;
 
-    public MvvmViewModel(){
-        iStationModel = StationModel.getStationModel();
-    }
+    @Inject
+    public MvvmViewModel(){ }
 
     public void setBinding(ActivityMvvmBinding binding){
         this.binding = binding;
