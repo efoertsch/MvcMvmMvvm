@@ -24,8 +24,6 @@ public class MvpOSEngineeringPresenter implements IMvpOSEngineeringPresenter {
             }
     );
 
-    private IMvpOSEngineeringView iMvpOSEngineeringView;
-
     public MvpOSEngineeringPresenter()  {
         iStationModel = StationModel.getStationModel();
     }
@@ -36,7 +34,6 @@ public class MvpOSEngineeringPresenter implements IMvpOSEngineeringPresenter {
     }
 
     public void assign(IMvpOSEngineeringView iMvpOSEngineeringView) {
-        this.iMvpOSEngineeringView = iMvpOSEngineeringView;
         iMvpOSEngineeringView.getSwitchChangePublishSubject().subscribe(new Subscriber<SwitchChange>() {
             @Override
             public void onCompleted() {
