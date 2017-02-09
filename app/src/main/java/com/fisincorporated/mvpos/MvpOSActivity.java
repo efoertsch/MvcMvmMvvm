@@ -24,7 +24,6 @@ public class MvpOSActivity extends AppCompatActivity {
 
         ((DaggerApplication) getApplication()).getComponent().inject(this);
 
-        // Is this best way to wire up the View and Presenter
         mvpOSEngineeringView.assignView(findViewById(R.id.activity_station_main_layout)).assignViewModel(mvpOSEngineeringPresenter);
 
         mvpOSEngineeringPresenter.assign(mvpOSEngineeringView);

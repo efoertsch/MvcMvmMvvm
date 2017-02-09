@@ -29,7 +29,7 @@ public class MvpOSEngineeringView implements SwitchChangeListener, IMvpOSEnginee
 
     private View view;
 
-    private IMvpOSEngineeringPresenter iEngineeringViewModel;
+    private IMvpOSEngineeringPresenter iMvpOSEngineeringPresenter;
 
     private PublishSubject<SwitchChange> switchChangePublishSubject = PublishSubject.create();
 
@@ -69,12 +69,12 @@ public class MvpOSEngineeringView implements SwitchChangeListener, IMvpOSEnginee
     }
 
     public MvpOSEngineeringView assignViewModel(IMvpOSEngineeringPresenter iEngineeringViewModel) {
-        this.iEngineeringViewModel = iEngineeringViewModel;
+        this.iMvpOSEngineeringPresenter = iEngineeringViewModel;
         return this;
     }
 
     public void onLoad() {
-        iEngineeringViewModel.getStationModelSetupObservable().subscribe(new Subscriber<IStationModel>() {
+        iMvpOSEngineeringPresenter.getStationModelSetupObservable().subscribe(new Subscriber<IStationModel>() {
             @Override
             public void onNext(IStationModel stationModel) {
                 stationTitle.setText(stationModel.getStationName());
