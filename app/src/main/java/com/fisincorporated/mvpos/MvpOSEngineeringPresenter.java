@@ -27,8 +27,6 @@ public class MvpOSEngineeringPresenter implements IMvpOSEngineeringPresenter {
             }
     );
 
-    private IMvpOSEngineeringView imvvmEngineeringView;
-
     @Inject
     public MvpOSEngineeringPresenter() {
     }
@@ -38,9 +36,8 @@ public class MvpOSEngineeringPresenter implements IMvpOSEngineeringPresenter {
         return stationModelSetupObervable;
     }
 
-    public void assign(IMvpOSEngineeringView imvvmEngineeringView) {
-        this.imvvmEngineeringView = imvvmEngineeringView;
-        imvvmEngineeringView.getSwitchChangePublishSubject().subscribe(new Subscriber<SwitchChange>() {
+    public void assign(IMvpOSEngineeringView iMvpOSEngineeringView) {
+        iMvpOSEngineeringView.getSwitchChangePublishSubject().subscribe(new Subscriber<SwitchChange>() {
             @Override
             public void onCompleted() {
                 // Nothing
@@ -58,7 +55,7 @@ public class MvpOSEngineeringPresenter implements IMvpOSEngineeringPresenter {
             }
         });
 
-        imvvmEngineeringView.getLogUpdatePublishSubject().subscribe(new Subscriber<String>() {
+        iMvpOSEngineeringView.getLogUpdatePublishSubject().subscribe(new Subscriber<String>() {
             @Override
             public void onCompleted() {}
 
