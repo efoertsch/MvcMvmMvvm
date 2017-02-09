@@ -69,9 +69,11 @@ public class StationModel implements IStationModel {
     }
 
     @Override
-    public void setStationSwitchValue(int position, boolean onOff){
+    public void setStationSwitchValue(int position, boolean onOff) {
         if (position <= stationControls.size()){
             stationControls.get(position).setOnOff(onOff);
+        } else {
+            throw new IndexOutOfBoundsException("There are  " + stationControls.size() + " switches indexed 0 -> " + stationControls.size() + " but you asked to change position:" + position);
         }
     }
 
