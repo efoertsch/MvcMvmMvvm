@@ -15,11 +15,18 @@ public class MvpEngineeringPresenter implements IMvpEngineeringPresenter, Switch
 
     private IMvpEngineeringView iMvpEngineeringView;
 
+
     @Inject
     public IStationModel iStationModel;
 
     @Inject
-    public MvpEngineeringPresenter() {}
+    public MvpEngineeringPresenter() { }
+
+    // This version is used for testing. For some reason Dagger was not injecting
+    // IStationModel for test.
+    public MvpEngineeringPresenter(IStationModel iStationModel) {
+        this.iStationModel = iStationModel;
+    }
 
 
     public MvpEngineeringPresenter assignEngineeringView(IMvpEngineeringView iMvpEngineeringView) {
@@ -39,7 +46,7 @@ public class MvpEngineeringPresenter implements IMvpEngineeringPresenter, Switch
 
     @Override
     public void switchChanged(SwitchChange switchChange) {
-        Log.d(TAG, "Switch changed. Position:" + switchChange.position + " isSelected:" + switchChange.isSelected);
+       // Log.d(TAG, "Switch changed. Position:" + switchChange.position + " isSelected:" + switchChange.isSelected);
         iStationModel.setStationSwitchValue(switchChange.position, switchChange.isSelected);
     }
 

@@ -1,21 +1,22 @@
-package com.fisincorporated.mockito;
+package com.fisincorporated.dagger;
+
+import android.util.Log;
 
 import com.fisincorporated.common.SwitchChange;
-import com.fisincorporated.dagger.TestAppModule;
-import com.fisincorporated.dagger.TestDiComponent;
 import com.fisincorporated.mvp.IMvpEngineeringView;
 import com.fisincorporated.mvp.MvpEngineeringPresenter;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 import javax.inject.Inject;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TestMvpEngineeringPresenter {
 

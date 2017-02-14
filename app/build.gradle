@@ -5,7 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
-        applicationId "com.fisincorporated.mvc_mvp_mvvm"
+        applicationId "com.fisincorporated"
         minSdkVersion 25
         targetSdkVersion 25
         versionCode 1
@@ -33,10 +33,14 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.0.1'
 
 
+
     // Butterknife - also includes library for Dagger
     compile 'com.jakewharton:butterknife:8.4.0'
-    compile 'com.google.dagger:dagger:2.8'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.google.dagger:dagger:2.9'
+    provided 'javax.annotation:jsr250-api:1.0'
+    annotationProcessor ('com.jakewharton:butterknife-compiler:8.4.0' , {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 
     // For MVP Observer/Subscriber
     compile 'io.reactivex:rxandroid:1.2.0'
@@ -44,22 +48,31 @@ dependencies {
 
     // For Dagger2
     // compile 'com.google.dagger:dagger:2.8'  // Added above for ButterKnife
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
 
     // For testing
     testCompile 'junit:junit:4.12'
 
-    // Mockito of course!
-    testCompile "org.mockito:mockito-core:2.+"
-    testAnnotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+    // Mockito
+    testCompile 'org.mockito:mockito-core:2.4.0'
+    testAnnotationProcessor 'com.google.dagger:dagger-compiler:2.9'
+    //provided 'javax.annotation:jsr250-api:1.0'
 
     // For Android/Mockito testing
     androidTestCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile ('com.android.support.test:runner:0.5', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
     androidTestCompile 'com.android.support.test:rules:0.5'
-    androidTestCompile "org.mockito:mockito-core:2.+"
-    androidTestCompile "com.google.dexmaker:dexmaker:1.2"
-    androidTestCompile "com.google.dexmaker:dexmaker-mockito:1.2"
+    androidTestCompile 'org.mockito:mockito-core:2.+'
+    androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
+    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
 
-
+    // Android espresso testing
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    // androidTestCompile 'com.android.support.test:runner:0.5'   added above
+    // following added to get past version conflict
+    androidTestCompile 'com.android.support:support-annotations:25.0.1'
 }

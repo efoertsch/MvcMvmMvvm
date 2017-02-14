@@ -1,8 +1,6 @@
 package com.fisincorporated.dagger;
 
 
-import com.fisincorporated.mockito.TestMvpEngineeringPresenter;
-
 import javax.inject.Singleton;
 
 import dagger.Component;
