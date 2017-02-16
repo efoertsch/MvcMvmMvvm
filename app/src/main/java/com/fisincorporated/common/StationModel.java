@@ -25,7 +25,7 @@ public class StationModel implements IStationModel {
         StationControl stationControl;
         stationControls = new ArrayList<>();
 
-        stationControl = new StationControl("Docking Clamps Released ", false);
+        stationControl = new StationControl("Docking Clamps Released", false);
         stationControls.add(stationControl);
 
         stationControl = new StationControl("Inertial Dampers Engaged", true);

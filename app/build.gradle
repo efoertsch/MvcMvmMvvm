@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.fisincorporated"
         minSdkVersion 25
@@ -24,21 +24,26 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force "com.android.support:design:$support"
+        force "com.android.support:support-annotations:$support"
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // Android support stuff
-    compile 'com.android.support:design:25.0.1'
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.android.support:recyclerview-v7:25.0.1'
-
-
+    compile "com.android.support:design:$support"
+    compile "com.android.support:appcompat-v7:$support"
+    compile "com.android.support:recyclerview-v7:$support"
 
     // Butterknife - also includes library for Dagger
-    compile 'com.jakewharton:butterknife:8.4.0'
-    compile 'com.google.dagger:dagger:2.9'
+    compile "com.jakewharton:butterknife:$butterknifeVersion"
+    compile  "com.google.dagger:dagger:$daggerVersion"
     provided 'javax.annotation:jsr250-api:1.0'
-    annotationProcessor ('com.jakewharton:butterknife-compiler:8.4.0' , {
+    annotationProcessor ("com.jakewharton:butterknife-compiler:$butterknifeVersion" , {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
@@ -48,14 +53,14 @@ dependencies {
 
     // For Dagger2
     // compile 'com.google.dagger:dagger:2.8'  // Added above for ButterKnife
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
     // For testing
     testCompile 'junit:junit:4.12'
 
     // Mockito
     testCompile 'org.mockito:mockito-core:2.4.0'
-    testAnnotationProcessor 'com.google.dagger:dagger-compiler:2.9'
+    testAnnotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     //provided 'javax.annotation:jsr250-api:1.0'
 
     // For Android/Mockito testing
@@ -68,7 +73,17 @@ dependencies {
     androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
     androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
 
-    // androidTestCompile 'com.android.support.test:runner:0.5'   added above
+    // Android espresso testing
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestCompile ("com.android.support.test.espresso:espresso-contrib:$espressoVersion"){
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+
     // following added to get past version conflict
-    androidTestCompile 'com.android.support:support-annotations:25.0.1'
+    androidTestCompile "com.android.support:support-annotations:$support"
+
 }
