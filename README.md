@@ -1,5 +1,5 @@
 
-An simple coding exercise to create the same UI functionality with different architectures.
+A coding exercise to create the same UI functionality with different architectures.
 
 The same data/screen layout is presented using the following architectures:
 
@@ -8,8 +8,5 @@ The same data/screen layout is presented using the following architectures:
 3. MVP using Observer/Subscriber for transfering data/updates
 4. MVVM using Data Binding
 
-TODO:
-
-Implement Dagger2  
-Add Mockito testing  
+Also utilized Dagger2, and some Junit and Mockito testing.
 
