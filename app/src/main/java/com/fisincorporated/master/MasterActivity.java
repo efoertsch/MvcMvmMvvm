@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.fisincorporated.mvc.MvcActivity;
 import com.fisincorporated.mvc_mvp_mvvm.R;
 import com.fisincorporated.mvp.MvpActivity;
-import com.fisincorporated.mvpos.MvpOSActivity;
+import com.fisincorporated.mvprxbus.MvpRxBusActivity;
 import com.fisincorporated.mvvm.MvvmActivity;
 
 import butterknife.BindView;
@@ -28,7 +28,7 @@ public class MasterActivity extends AppCompatActivity {
     @BindView(R.id.activity_master_mvp_button)
     Button mvpButton;
 
-    @BindView(R.id.activity_master_mvpos_button)
+    @BindView(R.id.activity_master_mvp_rxbus_button)
     Button mvvmButton;
 
 
@@ -52,9 +52,9 @@ public class MasterActivity extends AppCompatActivity {
     }
 
 
-    @OnClick(R.id.activity_master_mvpos_button)
+    @OnClick(R.id.activity_master_mvp_rxbus_button)
     public void onClickMvpOSButton(View view){
-        startActivity(MvpOSActivity.class);
+        startActivity(MvpRxBusActivity.class);
     }
 
     @OnClick(R.id.activity_master_mvvm_button)

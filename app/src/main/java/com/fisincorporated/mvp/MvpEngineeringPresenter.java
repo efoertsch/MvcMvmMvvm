@@ -15,26 +15,28 @@ public class MvpEngineeringPresenter implements IMvpEngineeringPresenter, Switch
 
     private IMvpEngineeringView iMvpEngineeringView;
 
-    @Inject
-    public IStationModel iStationModel;
+    private IStationModel iStationModel;
 
     @Inject
-    public MvpEngineeringPresenter() {}
+    public MvpEngineeringPresenter(IStationModel iStationModel) {
+        this.iStationModel = iStationModel;
+    }
 
-
-    public MvpEngineeringPresenter assignEngineeringView(IMvpEngineeringView iMvpEngineeringView) {
+    public IMvpEngineeringPresenter assignEngineeringView(IMvpEngineeringView iMvpEngineeringView) {
         this.iMvpEngineeringView = iMvpEngineeringView;
         return this;
     }
 
     @Override
     public void onLoad() {
-        setFieldValues(iStationModel);
+        setFieldValues();
     }
 
     @Override
-    public void saveStationLog(String stationLog) {
+    public void saveStationLogEntry(String stationLog) {
         Log.d(TAG, "Saving station log:" + stationLog);
+        iStationModel.setLogText(stationLog);
+        displayCurrentLogEntries();
     }
 
     @Override
@@ -43,11 +45,15 @@ public class MvpEngineeringPresenter implements IMvpEngineeringPresenter, Switch
         iStationModel.setStationSwitchValue(switchChange.position, switchChange.isSelected);
     }
 
-    private void setFieldValues(IStationModel stationModel) {
-        iMvpEngineeringView.setStationName(stationModel.getStationName());
-        iMvpEngineeringView.setBigButtonName(stationModel.getBigButtonName());
-        iMvpEngineeringView.setLogHint(stationModel.getLogHint());
-        iMvpEngineeringView.setStationEngineeringControls(stationModel.getStationControls());
+    private void setFieldValues() {
+        iMvpEngineeringView.setStationName(iStationModel.getStationName());
+        iMvpEngineeringView.setBigButtonName(iStationModel.getBigButtonName());
+        displayCurrentLogEntries();
+        iMvpEngineeringView.setStationEngineeringControls(iStationModel.getStationControls());
+    }
+
+    private void displayCurrentLogEntries() {
+        iMvpEngineeringView.setStationLogEntries(iStationModel.getLogText());
     }
 
 }

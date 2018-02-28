@@ -1,15 +1,17 @@
 package com.fisincorporated.common;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class StationModel implements IStationModel {
 
     private static StationModel stationModel;
+    private static final String NO_LOG_ENTRIES = "No log entries";
 
     ArrayList<IStationControl> stationControls;
 
-    private String logText;
+    private String logText = NO_LOG_ENTRIES;
 
     private StationModel(){}
 
@@ -54,13 +56,8 @@ public class StationModel implements IStationModel {
     }
 
     @Override
-    public String getLogHint(){
-        return "Engineering log";
-    }
-
-    @Override
     public void setLogText(String logText) {
-        this.logText = logText;
+        this.logText = ((new Date()).toString() + " "  + logText + "\n" + (this.logText.equals(NO_LOG_ENTRIES) ? "" : this.logText));
     }
 
     @Override
