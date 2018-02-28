@@ -5,7 +5,7 @@ The same data/screen layout is presented using the following architectures:
 
 1. MVC ('Out of the box') Android configuration
 2. MVP 
-3. MVP using Observer/Subscriber for transfering data/updates
+3. MVP using Jake Wharton's PublishRelay as Rx bus
 4. MVVM using Data Binding
 
 Also utilized Dagger2, and some Junit and Mockito testing.
