@@ -41,7 +41,10 @@ public class MvvmViewModel  implements IStationModel, SwitchChangeListener {
     }
 
     public void onClickSaveLogButton(View view){
-        Log.d(TAG, "Saved Log:" + binding.activityStationLog.getText());
+        Log.d(TAG, "Saved Log:" + binding.activityStationLogEntry.getText());
+        iStationModel.setLogText(binding.activityStationLogEntry.getText().toString());
+        binding.activityStationLogEntry.setText("");
+        binding.activityStationLogEntries.setText(iStationModel.getLogText());
     }
 
     @Override
@@ -63,11 +66,6 @@ public class MvvmViewModel  implements IStationModel, SwitchChangeListener {
     @Override
     public String getBigButtonName() {
         return iStationModel.getBigButtonName();
-    }
-
-    @Override
-    public String getLogHint() {
-        return iStationModel.getLogHint();
     }
 
     @Override

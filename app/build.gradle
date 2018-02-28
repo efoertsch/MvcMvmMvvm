@@ -6,7 +6,7 @@ android {
     buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.fisincorporated.mvc_mvp_mvvm"
-        minSdkVersion 25
+        minSdkVersion 22
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -39,16 +39,18 @@ dependencies {
 
     // Butterknife - also includes library for Dagger
     compile 'com.jakewharton:butterknife:8.4.0'
-    compile 'com.google.dagger:dagger:2.8'
+    compile 'com.google.dagger:dagger:2.14.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
-    // For MVP Observer/Subscriber
-    compile 'io.reactivex:rxandroid:1.2.0'
-    compile 'io.reactivex:rxjava:1.1.5'
+    //RXJava eventbus
+    compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
 
     // For Dagger2
     // compile 'com.google.dagger:dagger:2.8'  // Added above for ButterKnife
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+    compile 'com.google.dagger:dagger-android-support:2.14.1'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.14.1'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.14.1'
+
 
     // For testing
     testCompile 'junit:junit:4.12'

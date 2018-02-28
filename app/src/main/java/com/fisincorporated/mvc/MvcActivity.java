@@ -23,6 +23,7 @@ import butterknife.OnClick;
 
 /**
  * 'Standard' Android activity but using Butterknife as only enhancement
+ * No Dagger injection
  */
 public class MvcActivity extends AppCompatActivity implements SwitchChangeListener {
 
@@ -36,14 +37,17 @@ public class MvcActivity extends AppCompatActivity implements SwitchChangeListen
     @BindView(R.id.activity_stations_save_log_button)
     Button saveLogButton;
 
-    @BindView(R.id.activity_station_log)
+    @BindView(R.id.activity_station_log_entry)
     EditText stationLog;
 
     @BindView(R.id.activity_station_switches_recyclerview)
     RecyclerView stationSwitches;
 
-    @BindView(R.id.activity_station_log_layout)
+    @BindView(R.id.activity_station_log_entry_layout)
     TextInputLayout stationLogHint;
+
+    @BindView(R.id.activity_station_log_entries)
+    TextView stationLogEnties;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +60,7 @@ public class MvcActivity extends AppCompatActivity implements SwitchChangeListen
 
     private void setupStation() {
         iStationModel = StationModel.getStationModel();
-        setFieldValues(iStationModel);
+        setFieldValues();
         setupRecyclerView(iStationModel);
     }
 
@@ -64,7 +68,14 @@ public class MvcActivity extends AppCompatActivity implements SwitchChangeListen
     @OnClick(R.id.activity_stations_save_log_button)
     public void onClickSaveLogButton(Button button){
         Log.d(TAG, "Saved Log:" + stationLog.getText());
+        iStationModel.setLogText(stationLog.getText().toString());
+        displayCurrentLogEntries();
 
+    }
+
+    private void displayCurrentLogEntries() {
+        stationLogEnties.setText(iStationModel.getLogText());
+        stationLog.setText(null);
     }
 
     @Override
@@ -73,10 +84,10 @@ public class MvcActivity extends AppCompatActivity implements SwitchChangeListen
         iStationModel.setStationSwitchValue(switchChange.position, switchChange.isSelected);
     }
 
-    private void setFieldValues(IStationModel stationInfo) {
-        stationTitle.setText(stationInfo.getStationName());
-        saveLogButton.setText(stationInfo.getBigButtonName());
-        stationLogHint.setHint(stationInfo.getLogHint());
+    private void setFieldValues() {
+        stationTitle.setText(iStationModel.getStationName());
+        saveLogButton.setText(iStationModel.getBigButtonName());
+        displayCurrentLogEntries();
     }
 
     private void setupRecyclerView(IStationModel stationInfo) {

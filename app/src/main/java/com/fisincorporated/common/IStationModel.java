@@ -9,8 +9,6 @@ public interface IStationModel {
 
     String getBigButtonName();
 
-    String getLogHint();
-
     void setLogText(String logText);
 
     String getLogText();
