@@ -19,8 +19,9 @@ public abstract class UIBuildersModule {
     @ContributesAndroidInjector(modules = {MvpOsActivityModule.class})
     abstract MvpRxBusActivity bindMvpOSActivity();
 
+    // Note this will end up both injecting MvvmViewModel and within MvvmViewModel inject IStationModel
     @ActivityScope
-    @ContributesAndroidInjector(modules = {})
+    @ContributesAndroidInjector(modules = {MvvmActivityModule.class})
     abstract MvvmActivity bindMvvmActivity();
 
     // Add more bindings here for other sub components

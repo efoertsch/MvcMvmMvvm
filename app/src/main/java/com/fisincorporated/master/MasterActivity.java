@@ -16,10 +16,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e. status bar and navigation/system bar) with
- * user interaction.
- */
 public class MasterActivity extends AppCompatActivity {
 
     @BindView(R.id.activity_master_mvc_button)
@@ -41,16 +37,13 @@ public class MasterActivity extends AppCompatActivity {
 
     @OnClick(R.id.activity_master_mvc_button)
     public void onClickMvcButton(View view){
-
         startActivity(MvcActivity.class);
     }
 
     @OnClick(R.id.activity_master_mvp_button)
     public void onClickMvpButton(View view){
-
         startActivity(MvpActivity.class);
     }
-
 
     @OnClick(R.id.activity_master_mvp_rxbus_button)
     public void onClickMvpOSButton(View view){
@@ -59,7 +52,6 @@ public class MasterActivity extends AppCompatActivity {
 
     @OnClick(R.id.activity_master_mvvm_button)
     public void onClickMvvmButton(View view){
-
         startActivity(MvvmActivity.class);
     }
 

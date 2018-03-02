@@ -19,13 +19,15 @@ public class MvvmViewModel  implements IStationModel, SwitchChangeListener {
 
     private static final String TAG = MvvmViewModel.class.getSimpleName();
 
-    @Inject
-    public IStationModel iStationModel;
+
+    private IStationModel iStationModel;
 
     private ActivityMvvmBinding binding;
 
     @Inject
-    public MvvmViewModel(){ }
+    public MvvmViewModel(IStationModel iStationModel){
+        this.iStationModel = iStationModel;
+    }
 
     public void setBinding(ActivityMvvmBinding binding){
         this.binding = binding;
