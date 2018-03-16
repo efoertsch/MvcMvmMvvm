@@ -28,7 +28,7 @@ import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-public class MvpRxBusEngineeringView implements IMvpRxBusEngineeringView, SwitchChangeListener, IOnDestroy {
+public class MvpRxBusEngineeringView implements IMvpRxBusEngineeringView, SwitchChangeListener {
 
     private static final String TAG = MvpRxBusEngineeringView.class.getSimpleName();
 
@@ -100,7 +100,7 @@ public class MvpRxBusEngineeringView implements IMvpRxBusEngineeringView, Switch
             if (o instanceof IStationModel) {
                 IStationModel iStationModel = (IStationModel) o;
                 stationTitle.setText(iStationModel.getStationName());
-                saveLogButton.setText(iStationModel.getBigButtonName());
+                saveLogButton.setText(iStationModel.getLogButtonText());
                 stationLogEntries.setText(iStationModel.getLogText());
                 setStationEngineeringControls(iStationModel.getStationControls());
                 return;

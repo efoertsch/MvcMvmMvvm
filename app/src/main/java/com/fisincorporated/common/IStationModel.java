@@ -7,7 +7,7 @@ public interface IStationModel {
 
     String getStationName();
 
-    String getBigButtonName();
+    String getLogButtonText();
 
     void setLogText(String logText);
 

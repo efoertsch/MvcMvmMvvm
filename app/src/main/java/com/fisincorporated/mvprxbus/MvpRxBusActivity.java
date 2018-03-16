@@ -28,4 +28,11 @@ public class MvpRxBusActivity extends AppCompatActivity {
 
         iMvpRxBusEngineeringPresenter.onLoad();
     }
+
+    @Override
+    public void onDestroy(){
+       super.onDestroy();
+        iMvpRxBusEngineeringPresenter.onDestroy();
+        iMvpRxBusEngineeringView.onDestroy();
+    }
 }

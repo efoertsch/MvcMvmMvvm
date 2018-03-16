@@ -59,7 +59,7 @@ public class MvcActivity extends AppCompatActivity implements SwitchChangeListen
     }
 
     private void setupStation() {
-        iStationModel = StationModel.getStationModel();
+        iStationModel = StationModel.getIStationModel();
         setFieldValues();
         setupRecyclerView(iStationModel);
     }
@@ -82,11 +82,13 @@ public class MvcActivity extends AppCompatActivity implements SwitchChangeListen
     public void switchChanged(SwitchChange switchChange) {
         Log.d(TAG,  "Switch changed. Position:" + switchChange.position + " isSelected:" + switchChange.isSelected);
         iStationModel.setStationSwitchValue(switchChange.position, switchChange.isSelected);
+        displayCurrentLogEntries();
+
     }
 
     private void setFieldValues() {
         stationTitle.setText(iStationModel.getStationName());
-        saveLogButton.setText(iStationModel.getBigButtonName());
+        saveLogButton.setText(iStationModel.getLogButtonText());
         displayCurrentLogEntries();
     }
 
