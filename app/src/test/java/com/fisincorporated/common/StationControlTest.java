@@ -16,7 +16,7 @@ public class StationControlTest {
 
     @Before
     public void createStation(){
-        iStationModel = StationModel.getStationModel();
+        iStationModel = StationModel.getIStationModel();
     }
 
     @Test

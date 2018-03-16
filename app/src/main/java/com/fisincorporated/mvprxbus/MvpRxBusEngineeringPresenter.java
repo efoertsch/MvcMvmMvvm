@@ -14,7 +14,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 // Is implementing IMvpRxBusEngineeringPresenter interface really way to go in MVVM architecture?
-public class MvpRxBusEngineeringPresenter implements IMvpRxBusEngineeringPresenter, IOnDestroy {
+public class MvpRxBusEngineeringPresenter implements IMvpRxBusEngineeringPresenter{
 
     private static final String TAG = MvpRxBusEngineeringPresenter.class.getSimpleName();
 
@@ -50,13 +50,14 @@ public class MvpRxBusEngineeringPresenter implements IMvpRxBusEngineeringPresent
                 SwitchChange switchChange = (SwitchChange) o;
                 Log.d(TAG, "Switch changed. Position:" + switchChange.position + " isSelected:" + switchChange.isSelected);
                 iStationModel.setStationSwitchValue(switchChange.position, switchChange.isSelected);
+                displayCurrentLogEntries();
                 return;
             }
             if (o instanceof LogUpdate) {
                 String logUpdate = ((LogUpdate) o).getLogUpdate();
                 Log.d(TAG, "Log update:" + logUpdate);
                 iStationModel.setLogText(logUpdate);
-                publishRelay.accept(new LogEntries(iStationModel.getLogText()));
+                displayCurrentLogEntries();
             }
         }
 
@@ -80,6 +81,10 @@ public class MvpRxBusEngineeringPresenter implements IMvpRxBusEngineeringPresent
         if (publishRelayDisposable != null){
             publishRelayDisposable.dispose();
         }
+    }
+
+    private void displayCurrentLogEntries() {
+        publishRelay.accept(new LogEntries(iStationModel.getLogText()));
     }
 
 }

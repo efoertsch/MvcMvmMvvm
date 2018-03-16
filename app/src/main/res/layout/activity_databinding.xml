@@ -2,11 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+    <data class="MvvmDataBinding">
+
+        <variable
+            name="dataModel"
+            type="com.fisincorporated.common.StationModel"/>
 
         <variable
             name="viewModel"
             type="com.fisincorporated.mvvm.MvvmViewModel"/>
+
     </data>
 
     <LinearLayout
@@ -24,7 +29,7 @@
             android:id="@+id/activity_viewModel_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.stationName}"
+            android:text="@{dataModel.stationName}"
             tools:text="StationName"/>
 
         <android.support.v7.widget.RecyclerView
@@ -54,7 +59,7 @@
                 android:id="@+id/activity_station_log_entries"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.logText}"
+                android:text="@{dataModel.logText}"
                 />
         </ScrollView>
 
@@ -80,11 +85,10 @@
             android:id="@+id/activity_stations_save_log_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/activity_station_log_entry"
             android:layout_marginTop="25dp"
-            android:onClick="@{viewModel::onClickSaveLogButton}"
+            android:onClick="@{() -> viewModel.appendLogEntry(dataModel, activityStationLogEntry)}"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:text="@{viewModel.bigButtonName}"
+            android:text="@{dataModel.logButtonText}"
             />
 
     </LinearLayout>

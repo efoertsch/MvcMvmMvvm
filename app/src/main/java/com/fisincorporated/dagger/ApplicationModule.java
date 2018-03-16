@@ -14,9 +14,17 @@ import dagger.Provides;
 public class ApplicationModule {
 
     // Using an interface to the model so defining injection here
+    // This is used for non-databinding examples
     @Provides
     @Singleton
-    public IStationModel getStationModel(){
+    public IStationModel getIStationModel(){
+        return StationModel.getIStationModel();
+    }
+
+    //This is used for databinding example
+    @Provides
+    @Singleton
+    public  StationModel getStationModel(){
         return StationModel.getStationModel();
     }
 

@@ -43,11 +43,12 @@ public class MvpEngineeringPresenter implements IMvpEngineeringPresenter, Switch
     public void switchChanged(SwitchChange switchChange) {
         Log.d(TAG, "Switch changed. Position:" + switchChange.position + " isSelected:" + switchChange.isSelected);
         iStationModel.setStationSwitchValue(switchChange.position, switchChange.isSelected);
+        displayCurrentLogEntries();
     }
 
     private void setFieldValues() {
         iMvpEngineeringView.setStationName(iStationModel.getStationName());
-        iMvpEngineeringView.setBigButtonName(iStationModel.getBigButtonName());
+        iMvpEngineeringView.setBigButtonName(iStationModel.getLogButtonText());
         displayCurrentLogEntries();
         iMvpEngineeringView.setStationEngineeringControls(iStationModel.getStationControls());
     }
